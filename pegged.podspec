@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "pegged"
-  s.version      = "0.0.1"
+  s.version      = "0.0.2"
   s.summary      = "Pegged is a tool for generating Objective-C recursive-decent parsers from Parsing Expression Grammars (PEGs)."
   s.description  = <<-DESC
   Pegged generates Objective-C parsers from PEG grammars. The parsers it generates are re-entrant, thread-safe, and do not leak memory: they are suitable for inclusion in other programs.
