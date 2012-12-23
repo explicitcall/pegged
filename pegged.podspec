@@ -24,14 +24,21 @@ Pegged reads the grammar specified in file and will create a class of the same n
 The data to be parsed may either be provided via a data source (which responds to a single selector, -nextString) or via the -parseString: selector. 
 DESC
   s.homepage     = "https://github.com/explicitcall/pegged"
-  s.license      = 'Public domain'
+  s.license      = {
+    :type => 'Public domain',
+    :text => <<-LICENSE
+       This code, along with the code it generates, is in the public domain
+    LICENSE
+  }
   s.authors      = { "Daniel Parnell" => "me@danielparnell.com", "Matt Diephouse" => "matt@diephouse.com" }
   s.source       = { :git => "https://github.com/explicitcall/pegged.git", :tag => "0.0.1" }
 
   s.platform     = :osx, '10.8'
-  s.source_files = 'Source', 'Source/*.{h,m,peg,pch}'
+  s.source_files = 'Source', 'Source/*.{h,m}'
 
   s.framework  = 'Foundation'
 
   s.requires_arc = true
+
+  s.prefix_header_file = 'Source/pegged_Prefix.pch'
 end
