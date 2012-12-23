@@ -23,12 +23,6 @@
 #pragma mark NSObject Methods
 //==================================================================================================
 
-- (void) dealloc
-{
-    [_name release];
-    
-    [super dealloc];
-}
 
 
 //==================================================================================================
@@ -38,7 +32,7 @@
 
 + (id) ruleWithName:(NSString*)name
 {
-    return [[[[self class] alloc] initWithName:name] autorelease];
+    return [[[self class] alloc] initWithName:name];
 }
 
 

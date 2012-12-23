@@ -18,12 +18,6 @@
 #pragma mark NSObject Methods
 //==================================================================================================
 
-- (void) dealloc
-{
-    [_expression release];
-    
-    [super dealloc];
-}
 
 
 //==================================================================================================
@@ -44,7 +38,7 @@
 
 + (id) conditionWithExpression:(NSString *)expression
 {
-    return [[[[self class] alloc] initWithExpression:expression] autorelease];
+    return [[[self class] alloc] initWithExpression:expression];
 }
 
 

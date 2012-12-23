@@ -21,11 +21,6 @@
 @synthesize begin = _begin;
 @synthesize end = _end;
 @synthesize action = _action;
-- (void) dealloc
-{
-    [_action release];
-    [super dealloc];
-}
 @end
 
 
@@ -64,8 +59,7 @@
     if (nextString)
     {
         nextString = [_string stringByAppendingString:nextString];
-        [_string release];
-        _string = [nextString retain];
+        _string = nextString;
     }
     _limit = [_string lengthOfBytesUsingEncoding:NSUTF8StringEncoding];
     yyprintf((stderr, "refill"));
@@ -151,27 +145,27 @@
 
 - (BOOL) matchString:(char *)s
 {
-    NSAutoreleasePool *pool = [NSAutoreleasePool new];
+    @autoreleasepool
+	{
 #ifndef PEGPARSER_CASE_INSENSITIVE
-    const char *cstring = [_string UTF8String];
+		const char *cstring = [_string UTF8String];
 #else
-    const char *cstring = [[_string lowercaseString] UTF8String];
+		const char *cstring = [[_string lowercaseString] UTF8String];
 #endif
-    NSInteger saved = _index;
-    while (*s)
-    {
-        if (_index >= _limit && ![self _refill]) return NO;
-        if (cstring[_index] != *s)
-        {
-            [pool drain];
-            _index = saved;
-            yyprintf((stderr, "  fail matchString '%s'", s));
-            return NO;
-        }
-        ++s;
-        ++_index;
+		NSInteger saved = _index;
+		while (*s)
+		{
+			if (_index >= _limit && ![self _refill]) return NO;
+			if (cstring[_index] != *s)
+			{
+				_index = saved;
+				yyprintf((stderr, "  fail matchString '%s'", s));
+				return NO;
+			}
+			++s;
+			++_index;
+		}
     }
-    [pool drain];
     yyprintf((stderr, "  ok   matchString '%s'", s));
     return YES;
 }
@@ -197,7 +191,6 @@
     capture.end    = yyend;
     capture.action = action;
     [_captures addObject:capture];
-    [capture release];
 }
 
 - (NSString *) yyText:(NSUInteger)begin to:(NSUInteger)end
@@ -219,8 +212,7 @@
 - (void) yyCommit
 {
     NSString *newString = [_string substringFromIndex:_index];
-    [_string release];
-    _string = [newString retain];
+    _string = newString;
     _limit -= _index;
     _index = 0;
 
@@ -782,7 +774,6 @@ static PEGParserRule __Suffix = ^(PEGParser *parser){
         [self yyDone];
     [self yyCommit];
     
-    [_string release];
     _string = nil;
     
     return matched;
@@ -850,14 +841,6 @@ static PEGParserRule __Suffix = ^(PEGParser *parser){
 }
 
 
-- (void) dealloc
-{
-    [_string release];
-    [_rules release];
-    [_captures release];
-
-    [super dealloc];
-}
 
 
 //==================================================================================================
@@ -872,7 +855,6 @@ static PEGParserRule __Suffix = ^(PEGParser *parser){
     {
         rules = [NSMutableArray new];
         [_rules setObject:rules forKey:name];
-        [rules release];
     }
     
     [rules addObject:rule];
@@ -892,7 +874,6 @@ static PEGParserRule __Suffix = ^(PEGParser *parser){
     _limit  = [_string lengthOfBytesUsingEncoding:NSUTF8StringEncoding];
     _index  = 0;
     BOOL retval = [self _parse];
-    [_string release];
     _string = nil;
     return retval;
 }

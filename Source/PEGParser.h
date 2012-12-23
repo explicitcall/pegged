@@ -30,11 +30,11 @@ typedef void (^PEGParserAction)(PEGParser *self, NSString *text);
     Compiler *_compiler;
 }
 
-@property (retain) PEGParserDataSource *dataSource;
+@property (strong) PEGParserDataSource *dataSource;
 
 @property (readonly) NSUInteger captureStart;
 @property (readonly) NSUInteger captureEnd;
-@property (retain) Compiler *compiler;
+@property (strong) Compiler *compiler;
 
 - (void) addRule:(PEGParserRule)rule withName:(NSString *)name;
 

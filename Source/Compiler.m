@@ -58,18 +58,6 @@ const NSString *__sourceTemplate;
 }
 
 
-- (void) dealloc
-{
-    [_stack release];
-    [_rules release];
-    [_properties release];
-    
-    [_className release];
-    [_headerPath release];
-    [_sourcePath release];
-    
-    [super dealloc];
-}
 
 
 //==================================================================================================
@@ -150,15 +138,8 @@ const NSString *__sourceTemplate;
     }
         
     NSString *source = [NSString stringWithFormat:(NSString *)__sourceTemplate, PEGGED_VERSION_MAJOR, PEGGED_VERSION_MINOR, PEGGED_VERSION_CHANGE, self.className, imports, self.className, self.className, self.className, self.className, self.className, synthesizes, self.className, self.className, self.className, self.className, self.className, [self.className uppercaseString], self.className, self.className, self.className, self.className, definitions, _startRule.name, declarations, self.className];
-    [declarations release];
-    [definitions release];
     [source writeToFile:self.sourcePath atomically:NO encoding:NSUTF8StringEncoding error:&error];
     
-    [properties release];
-    [classes release];
-    [imports release];
-    [synthesizes release];
-    [variables release];
 }
 
 
@@ -172,7 +153,6 @@ const NSString *__sourceTemplate;
     Node *second = [_stack lastObject];
     [_stack removeLastObject];
     Node *first = [_stack lastObject];
-    [first retain];
     [_stack removeLastObject];
     
     Sequence *sequence = nil;
@@ -185,7 +165,6 @@ const NSString *__sourceTemplate;
     }
     [sequence append:second];
     [_stack addObject:sequence];
-    [first release];
 }
 
 
@@ -397,11 +376,7 @@ const NSString *__sourceTemplate;
     property.stars = _propertyStars;
     property.type = _propertyType;
     [_properties addObject:property];
-    [property release];
     
-    [_propertyParameters release];
-    [_propertyStars release];
-    [_propertyType release];
 }
 
 - (void) parsedExtraCode:(NSString*)code {

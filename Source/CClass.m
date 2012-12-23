@@ -88,13 +88,6 @@ static void setbits(unsigned char bitset[], const char *cstring, BOOL caseInsens
 #pragma mark NSObject Methods
 //==================================================================================================
 
-- (void) dealloc
-{
-    [_string release];
-    [_repr release];
-    
-    [super dealloc];
-}
 
 
 //==================================================================================================
@@ -131,7 +124,7 @@ static void setbits(unsigned char bitset[], const char *cstring, BOOL caseInsens
 
 + (id) cclassFromString:(NSString *)class;
 {
-    return [[[[self class] alloc] initWithString:class] autorelease];
+    return [[[self class] alloc] initWithString:class];
 }
 
 

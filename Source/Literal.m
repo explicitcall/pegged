@@ -19,12 +19,6 @@
 #pragma mark Public Methods
 //==================================================================================================
 
-- (void) dealloc
-{
-    [_string release];
-    
-    [super dealloc];
-}
 
 
 //==================================================================================================
@@ -46,7 +40,7 @@
 
 + (id) literalWithString:(NSString *)string
 {
-    return [[[[self class] alloc] initWithString:string] autorelease];
+    return [[[self class] alloc] initWithString:string];
 }
 
 

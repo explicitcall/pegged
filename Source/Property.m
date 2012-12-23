@@ -37,15 +37,6 @@
 }
 
 
-- (void) dealloc
-{
-    [_name release];
-    [_parameters release];
-    [_stars release];
-    [_type release];
-    
-    [super dealloc];
-}
 
 
 //==================================================================================================

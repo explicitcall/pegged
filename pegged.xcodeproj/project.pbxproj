@@ -30,10 +30,10 @@
 		BE3FF60210EE11040020AEB9 /* Code.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3FF60110EE11040020AEB9 /* Code.m */; };
 		BE3FF77110EE97790020AEB9 /* Quantifier.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3FF77010EE97790020AEB9 /* Quantifier.m */; };
 		BE3FF7DA10EEFF540020AEB9 /* LookAhead.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3FF7D910EEFF540020AEB9 /* LookAhead.m */; };
-		BE3FF92110F0ED0C0020AEB9 /* Calculator.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3FF91610F0E9EA0020AEB9 /* Calculator.m */; };
+		BE3FF92110F0ED0C0020AEB9 /* Calculator.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3FF91610F0E9EA0020AEB9 /* Calculator.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		BE3FF93110F0EDAF0020AEB9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FB779EFE84155DC02AAC07 /* Foundation.framework */; };
 		BE3FF9B810F0EE8D0020AEB9 /* CalcParser.peg in Sources */ = {isa = PBXBuildFile; fileRef = BE3FF91410F0E9EA0020AEB9 /* CalcParser.peg */; };
-		BE3FF9C310F0EF8E0020AEB9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3FF9C210F0EF8E0020AEB9 /* main.m */; };
+		BE3FF9C310F0EF8E0020AEB9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3FF9C210F0EF8E0020AEB9 /* main.m */; settings = {COMPILER_FLAGS = ""; }; };
 		BE94313410F8315100FA4E0A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FB779EFE84155DC02AAC07 /* Foundation.framework */; };
 		BE94313E10F8317100FA4E0A /* EvenParser.peg in Sources */ = {isa = PBXBuildFile; fileRef = BEDCAA0A10F82865003C0737 /* EvenParser.peg */; };
 		BE94314010F8317800FA4E0A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BEDCAA2010F8291A003C0737 /* main.m */; };
@@ -512,6 +512,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_MODEL_TUNING = G5;
@@ -527,6 +529,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -564,6 +568,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_MODEL_TUNING = G5;
@@ -577,6 +583,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_MODEL_TUNING = G5;

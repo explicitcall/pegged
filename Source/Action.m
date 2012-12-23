@@ -16,12 +16,6 @@
 #pragma mark NSObject Methods
 //==================================================================================================
 
-- (void) dealloc
-{
-    [_code release];
-    
-    [super dealloc];
-}
 
 
 //==================================================================================================
@@ -48,7 +42,7 @@
 
 + (id) actionWithCode:(NSString *)code
 {
-    return [[[[self class] alloc] initWithCode:code] autorelease];
+    return [[[self class] alloc] initWithCode:code];
 }
 
 
