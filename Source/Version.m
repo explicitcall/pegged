@@ -6,6 +6,8 @@
 //  This code is in the public domain.
 //
 
+#import <Foundation/Foundation.h>
+
 const NSUInteger PEGGED_VERSION_MAJOR  = 0;
 const NSUInteger PEGGED_VERSION_MINOR  = 4;
 const NSUInteger PEGGED_VERSION_CHANGE = 0;
